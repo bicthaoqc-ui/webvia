@@ -15,3 +15,351 @@ body {
   outline: 2px solid #2b5cf0;
   outline-offset: 2px;
 }
+
+/* ============================================
+   BIRD LOADING ANIMATION
+   ============================================ */
+
+.bird-loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* --- Clouds --- */
+.bird-clouds {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.bird-cloud {
+  position: absolute;
+  width: 120px;
+  color: #e2e8f0;
+  animation: cloud-drift 8s ease-in-out infinite;
+}
+
+.bird-cloud-1 {
+  top: 20%;
+  left: -10%;
+  animation-delay: 0s;
+  opacity: 0.7;
+}
+
+.bird-cloud-2 {
+  top: 40%;
+  left: -15%;
+  width: 80px;
+  animation-delay: -3s;
+  opacity: 0.5;
+}
+
+@keyframes cloud-drift {
+  0% {
+    transform: translateX(-20px);
+  }
+  100% {
+    transform: translateX(calc(100vw + 40px));
+  }
+}
+
+/* --- Bird --- */
+.bird-wrapper {
+  position: relative;
+  z-index: 10;
+  animation: bird-fly 3s ease-in-out infinite;
+}
+
+.bird-svg {
+  width: 100px;
+  height: 68px;
+  filter: drop-shadow(0 4px 12px rgba(43, 92, 240, 0.25));
+}
+
+.bird-wing {
+  transform-origin: 60px 44px;
+  animation: wing-flap 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes wing-flap {
+  0% {
+    transform: rotate(0deg) scaleY(1);
+  }
+  100% {
+    transform: rotate(-25deg) scaleY(0.7);
+  }
+}
+
+@keyframes bird-fly {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(20px, -14px) rotate(-3deg);
+  }
+  50% {
+    transform: translate(0px, -6px) rotate(0deg);
+  }
+  75% {
+    transform: translate(-20px, -14px) rotate(3deg);
+  }
+}
+
+/* --- Loading text --- */
+.bird-loading-text {
+  margin-top: 28px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #475569;
+  letter-spacing: 0.02em;
+}
+
+.bird-dots {
+  display: inline-flex;
+  width: 24px;
+  margin-left: 2px;
+}
+
+.bird-dot {
+  animation: dot-blink 1.4s infinite both;
+  opacity: 0;
+}
+
+.bird-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.bird-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dot-blink {
+  0%, 80%, 100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+
+/* ============================================
+   SERVICE POPUP / MODAL
+   ============================================ */
+
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(6px);
+  animation: popup-fade-in 0.25s ease-out;
+}
+
+.popup-content {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 1.25rem;
+  padding: 2rem;
+  box-shadow:
+    0 25px 60px -12px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(43, 92, 240, 0.08);
+  animation: popup-slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.popup-close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: none;
+  background: #f1f5f9;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.popup-close-btn:hover {
+  background: #e2e8f0;
+  color: #1e293b;
+  transform: rotate(90deg);
+}
+
+.popup-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.popup-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  flex-shrink: 0;
+  border-radius: 0.875rem;
+  background: linear-gradient(135deg, #eef4ff 0%, #d9e6ff 100%);
+  color: #2b5cf0;
+}
+
+.popup-title {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.3;
+}
+
+.popup-description {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: #475569;
+  margin-bottom: 1.5rem;
+}
+
+.popup-features {
+  background: #f8fafc;
+  border-radius: 0.875rem;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.popup-features-title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #2b5cf0;
+  margin-bottom: 0.75rem;
+}
+
+.popup-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.popup-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.popup-check-icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+  color: #16a34a;
+  margin-top: 1px;
+}
+
+.popup-cta {
+  text-align: center;
+}
+
+.popup-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #2b5cf0 0%, #1e46c9 100%);
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(43, 92, 240, 0.3);
+}
+
+.popup-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(43, 92, 240, 0.4);
+}
+
+.popup-cta-btn:active {
+  transform: translateY(0);
+}
+
+@keyframes popup-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes popup-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ============================================
+   SERVICE CARD (interactive)
+   ============================================ */
+
+.service-card-interactive {
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-card-interactive:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 28px -8px rgba(43, 92, 240, 0.18),
+    0 0 0 1px rgba(43, 92, 240, 0.1);
+}
+
+.service-card-interactive:active {
+  transform: translateY(-1px);
+}
+
+.service-card-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #2b5cf0;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: all 0.2s ease;
+}
+
+.service-card-interactive:hover .service-card-hint {
+  opacity: 1;
+  transform: translateX(0);
+}

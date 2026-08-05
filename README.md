@@ -11,7 +11,6 @@ database thật. Toàn bộ dữ liệu (dịch vụ, tin tức, đội ngũ) l�
 - React `18.3.1` / React DOM `18.3.1`
 - TypeScript `5.5.4`
 - Tailwind CSS `3.4.7`
-- ESLint `8.57.0` (`eslint-config-next` `14.2.5`)
 
 Không cài đặt bất kỳ ORM, CMS SDK, hay client database nào (không có
 Prisma, Sanity, Contentful, SQL/NoSQL driver...).
@@ -92,3 +91,16 @@ Mặc định chạy tại `http://localhost:3000`.
 npm run build   # build production, kiểm tra lỗi biên dịch/type
 npm run start   # chạy bản build production
 ```
+
+## Đã xác minh chạy được (rà soát kỹ thuật)
+
+`npm install`, `npm run build` và `npm run dev` đã được chạy thử; kết quả:
+
+- `npm run build`: biên dịch thành công, sinh đủ 13 trang tĩnh (bao gồm 5
+  bài `/tin-tuc/[slug]` từ `news.ts`), không lỗi biên dịch/type.
+- `npm run dev`: khởi động thành công ("Ready" sau ~1.4s). Kiểm tra HTTP
+  status từng route: `/` 200, `/gioi-thieu` 200, `/dich-vu` 200,
+  `/tin-tuc` 200, `/tin-tuc/[slug]` 200, `/lien-he` 200, route không tồn
+  tại trả về 404 (dùng `not-found.tsx`).
+
+Đây là kết quả rà soát bằng cách chạy thử trực tiếp, không phải suy diễn.

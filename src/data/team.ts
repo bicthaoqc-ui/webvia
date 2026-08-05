@@ -1,5 +1,4 @@
-// Dữ liệu đội ngũ — dữ liệu tĩnh, giả lập (tên/vai trò minh họa),
-// KHÔNG phải thông tin nhân sự thật của bất kỳ tổ chức nào.
+// Đội ngũ nhân sự tinh hoa của VIA.
 
 export type TeamMember = {
   name: string;
@@ -9,18 +8,23 @@ export type TeamMember = {
 
 export const teamMembers: TeamMember[] = [
   {
-    name: "Nguyễn Văn A",
-    role: "Trưởng nhóm phát triển",
+    name: "Lương Gia Bảo",
+    role: "Giám đốcphát triển",
     bio: "Phụ trách định hướng kỹ thuật và kiến trúc hệ thống.",
   },
   {
-    name: "Trần Thị B",
-    role: "Thiết kế giao diện",
+    name: "Trần Thị Bình",
+    role: "Giám đốc Thiết kế giao diện",
     bio: "Phụ trách thiết kế trải nghiệm và giao diện người dùng.",
   },
   {
-    name: "Lê Văn C",
-    role: "Chuyên viên vận hành",
+    name: "Đinh Thị Bích Thảo",
+    role: "Giám Đốc công ty",
+    bio: "Phụ trách hỗ trợ kỹ thuật và vận hành hệ thống.",
+  },
+  {
+    name: "Đinh Thị Bích Phương",
+    role: "Giám đốc khối kiểm thử",
     bio: "Phụ trách hỗ trợ kỹ thuật và vận hành hệ thống.",
   },
 ];
